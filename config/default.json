@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://Michael:Michael123@contact-keeper-zfwsw.mongodb.net/GameReview?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
+}
