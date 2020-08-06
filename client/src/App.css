@@ -1,38 +1,149 @@
-.App {
-  text-align: center;
+/* Reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*Global/Standard stlying*/
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+li {
+  list-style: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+a {
+  text-decoration: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.text-center {
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  z-index: 1;
+  width: 100%;
+  opacity: 0.9;
+  background: rgba(222, 166, 2, 1) 90%;
+}
+
+#nav-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  position: absolute;
+  top: 0.4rem;
+  left: 1rem;
+  color: #000;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar ul li a {
+  color: #fff;
+  padding: 0.4rem;
+  margin: 0 0.25rem;
+  font-weight: 600;
+}
+
+/* Landing styles */
+
+.landing-container {
+  color: rgb(250, 250, 250);
+  background-image: url("https://images.pexels.com/photos/2416948/pexels-photo-2416948.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 1.3rem;
+  padding: 0.2rem 1.4rem;
+  text-align: center;
+  font-weight: 600;
+  margin: 0.5rem;
+  background: rgb(252, 190, 58);
+  color: #f3f3f3;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.button-list {
+  display: inline-block;
+  flex-direction: row;
+}
+
+/* Campgrounds Styling */
+
+.showcase {
+  background-color: #fff;
+  padding: 0.4rem 0.8rem;
+  padding-top: 1rem;
+  height: 30%;
+  width: 40%;
+  margin: 1.2rem auto;
+  border-radius: 9px;
+  border: #9e9e9e solid 2px;
+  box-shadow: 0 10px 15px;
+}
+
+.showcase button {
+  margin-top: 1rem;
+  font-size: large;
+  border-radius: 10px;
+  padding: 0.3rem;
+  box-shadow: 0 2px 5px;
+  background-color: #d64d3b;
+  color: #fff;
+}
+
+.showcase p {
+  margin-top: 1.2rem;
+  line-height: 1.6rem;
+}
+
+.card-cont {
+  width: 66%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 3rem auto;
+  gap: 1.25rem;
+}
+
+.card {
+  box-shadow: 0 5px 10px;
+  line-height: 1.6rem;
+}
+
+.card h3,
+.card p {
+  margin-left: 0.8rem;
+}
+
+.card p {
+  padding: 0.5rem 0;
+}
+
+.card img {
+  width: 100%;
+  object-fit: cover;
+  height: 150px;
+  border-bottom: 1px #888785 solid;
 }
