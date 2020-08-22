@@ -1,30 +1,66 @@
-import React from "react";
+import React, { Fragment, useContext } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import AuthContext from "../../context/auth/authContext";
+import GamesContext from "../../context/games/gamesContext";
 
-const Navbar = () => {
-  return (
-    <nav className="navbar">
-      <a href="/" id="nav-title">
-        GamerFacts
-      </a>
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/games">Games</a>
-        </li>
-        <li>
-          <a href="/#!">Login</a>
-        </li>
-        <li>
-          <a href="/#!">Sign Up</a>
-        </li>
-        <li>
-          <a href="/#!">About</a>
-        </li>
-      </ul>
-    </nav>
+const Navbar = ({ title, icon }) => {
+  const authContext = useContext(AuthContext);
+  const gamesContext = useContext(GamesContext);
+
+  const { isAuthenticated, logout, user } = authContext;
+  // const { clearGames } = gamesContext;
+
+  const onLogout = () => {
+    logout();
+    // clearContacts();
+  };
+
+  const authLinks = (
+    <Fragment>
+      <li>Hello {user && user.name}</li>
+      <li>
+        <Link to="/games">Game Reviews</Link>
+        <a onClick={onLogout} href="/">
+          <i className="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+      </li>
+    </Fragment>
   );
+
+  const guestLinks = (
+    <Fragment>
+      <li>
+        <Link to="/register">Register</Link>
+      </li>
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
+    </Fragment>
+  );
+
+  return (
+    <div className="navbar">
+      <a href="/">
+        <h1 id="nav-title">
+          <i className={icon} /> {title}
+        </h1>
+      </a>
+
+      <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
+    </div>
+  );
+};
+
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.string,
+};
+
+Navbar.defaultProps = {
+  title: "Gamer Facts",
+  icon: "fas fa-gamepad",
 };
 
 export default Navbar;

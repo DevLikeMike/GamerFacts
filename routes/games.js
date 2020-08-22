@@ -73,13 +73,13 @@ router.post(
   }
 );
 
-// @route       PUT api/contacts/:id
-// @desc        Update contact
+// @route       PUT api/games/:id
+// @desc        Update game
 // @access      Private
 router.put("/:id", auth, async (req, res) => {
   const { name, image, description, rating, platform } = req.body;
 
-  //Build Contact object
+  //Build Game object
   const gameFields = {};
   if (name) gameFields.name = name;
   if (image) gameFields.image = image;

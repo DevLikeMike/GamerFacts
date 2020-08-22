@@ -33,6 +33,18 @@ a {
   color: #fff;
 }
 
+.success {
+  background-color: #a7ee00;
+}
+
+.warning {
+  background-color: #d6a03b;
+}
+
+.danger {
+  background-color: #d64d3b;
+}
+
 /* Navbar */
 .navbar {
   display: flex;

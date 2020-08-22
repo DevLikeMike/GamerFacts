@@ -4,25 +4,41 @@ import Nav from "./components/layout/Navbar";
 import Landing from "./components/pages/Landing";
 import Games from "./components/pages/Games";
 import Game from "./components/pages/Game";
+import PrivateRoute from "./components/routing/PrivateRoute";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 
 import GamesState from "./context/games/GamesState";
+import AuthState from "./context/auth/AuthState";
+import AlertState from "./context/alert/AlertState";
+import setAuthToken from "./utils/setAuthToken";
 
 import "./App.css";
 
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
 const App = () => {
   return (
-    <GamesState>
-      <Router>
-        <div className="App">
-          <Nav />
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/games" component={Games} />
-            <Route path="/games/:id" component={Game} />
-          </Switch>
-        </div>
-      </Router>
-    </GamesState>
+    <AuthState>
+      <AlertState>
+        <GamesState>
+          <Router>
+            <div className="App">
+              <Nav />
+              <Switch>
+                <Route exact path="/" component={Landing} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+                <Route exact path="/games" component={Games} />
+                <Route path="/games/:_id" component={Game} />
+              </Switch>
+            </div>
+          </Router>
+        </GamesState>
+      </AlertState>
+    </AuthState>
   );
 };
 
