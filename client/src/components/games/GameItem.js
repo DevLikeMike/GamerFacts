@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import GameContext from "../../context/games/gamesContext";
 
 const GameItem = ({ game }) => {
@@ -10,9 +11,9 @@ const GameItem = ({ game }) => {
       <img src={image} alt="nothing" />
       <h3>{name}</h3>
       <p>{description.substr(0, 70)}</p>
-      <a href={`/games/${_id}`} className="btn btn-small">
+      <Link to={`/games/${_id}`} className="btn btn-small">
         See Game
-      </a>
+      </Link>
     </div>
   );
 };

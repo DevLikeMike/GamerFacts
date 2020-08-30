@@ -8,7 +8,10 @@
 /*Global/Standard stlying*/
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  /* background-color: #333; */
+}
+
+textarea {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 li {
@@ -22,6 +25,19 @@ a {
 
 .text-center {
   text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.col {
+  flex-direction: column;
 }
 
 .btn-small {
@@ -112,7 +128,74 @@ a {
   flex-direction: row;
 }
 
-/* Campgrounds Styling */
+/* Form Styling */
+.form-wrapper {
+  margin: 3rem auto 0 auto;
+  width: 35%;
+  border: #333 0.5px solid;
+  border-radius: 5px;
+  padding-bottom: 2rem;
+}
+
+.form-wrapper form {
+  width: 90%;
+}
+
+.form-wrapper .form-group {
+  width: 100%;
+  float: inline-start;
+  margin-top: 0.6rem;
+}
+
+.form-wrapper .form-group input {
+  width: 100%;
+  height: 2rem;
+  border: #9e9e9e 1px solid;
+  border-radius: 5px;
+  padding-left: 0.2rem;
+  font-size: 18px;
+}
+
+.form-wrapper input[type="submit"],
+.form-wrapper a {
+  width: 100%;
+  margin: 1rem auto 0.6rem auto;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  height: 3rem;
+  background-color: #ffbf49;
+  border: none;
+  border-radius: 5px;
+  font-size: larger;
+  font-weight: 600;
+  color: #000;
+}
+
+.form-wrapper a {
+  width: 87%;
+  background-color: #54cf36;
+  font-weight: 600;
+}
+
+.form-wrapper textarea {
+  resize: none;
+  height: 10rem;
+  width: 100%;
+  padding: 0.2rem;
+}
+
+.form-wrapper h3 {
+  margin-top: 1rem;
+}
+#newGameHeader {
+  margin-bottom: 1rem;
+}
+
+.form-wrapper .stars {
+  margin: 0rem auto;
+}
+
+/* Games Styling */
 
 .showcase {
   background-color: #fff;
@@ -126,8 +209,11 @@ a {
   box-shadow: 0 10px 15px;
 }
 
-.showcase button {
-  margin-top: 1rem;
+.showcase h1 {
+  margin-bottom: 1rem;
+}
+
+.showcase .btn {
   font-size: large;
   border-radius: 10px;
   padding: 0.3rem;

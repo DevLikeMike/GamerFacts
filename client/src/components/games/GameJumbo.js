@@ -1,11 +1,14 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 const Games = () => {
   return (
     <Fragment>
       <div className="showcase">
         <h1>GamerFacts</h1>
-        <button>Review A Game Now!</button>
+        <Link to="/newgame" className="btn">
+          Review A Game Now!
+        </Link>
         <p>Welcome to GamerFacts, the ground breaking videogame review site!</p>
         <hr />
         <p>

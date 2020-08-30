@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, Fragment } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
 
@@ -50,60 +50,60 @@ const Register = (props) => {
   };
 
   return (
-    <div className="form-container">
-      <h1>
-        Account <span className="text-primary">Register</span>
-      </h1>
-      <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
+    <Fragment>
+      <div className="form-wrapper flex flex-center col">
+        <h1>Account Register</h1>
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={onChange}
+              placeholder="Please enter your name..."
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={onChange}
+              placeholder="Please enter your email"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={onChange}
+              placeholder="Please enter your password"
+              required
+              minLength="6"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              name="password2"
+              value={password2}
+              onChange={onChange}
+              placeholder="Confirm your password"
+              required
+              minLength="6"
+            />
+          </div>
           <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={onChange}
-            required
+            type="submit"
+            value="Register"
+            className="btn btn-primary btn-block"
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={onChange}
-            required
-            minLength="6"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password2">Confirm Password</label>
-          <input
-            type="password"
-            name="password2"
-            value={password2}
-            onChange={onChange}
-            required
-            minLength="6"
-          />
-        </div>
-        <input
-          type="submit"
-          value="Register"
-          className="btn btn-primary btn-block"
-        />
-      </form>
-    </div>
+        </form>
+      </div>
+    </Fragment>
   );
 };
 

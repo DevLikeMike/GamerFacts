@@ -9,6 +9,11 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
+    case ADD_GAME:
+      return {
+        ...state,
+        games: [action.payload, ...state.games],
+      };
     case GET_GAMES:
       return {
         ...state,

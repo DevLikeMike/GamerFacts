@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, Fragment } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import Spinner from "../layout/Spinner";
 
 import GamesContext from "../../context/games/gamesContext";
 import AuthContext from "../../context/auth/authContext";
 
-const Game = () => {
+const Game = (props) => {
   const authContext = useContext(AuthContext);
   const gamesContext = useContext(GamesContext);
   const { games, getGames, deleteGame } = gamesContext;
@@ -20,8 +21,10 @@ const Game = () => {
   // Get id from query, set ready for mongo comparisons
   const { _id } = useParams();
 
-  const onDelete = (id) => {
+  const onDelete = (id, e) => {
+    e.preventDefault();
     deleteGame(id);
+    props.history.push("/games");
   };
 
   if (games !== null) {
@@ -36,9 +39,9 @@ const Game = () => {
           <p>{description}</p>
           {gameUser == user._id ? (
             <div className="buttonWrapper">
-              <a href="#!" className="btn btn-small warning">
+              <Link href="#!" className="btn btn-small warning">
                 Edit Review
-              </a>
+              </Link>
               <a
                 href="/games"
                 className="btn btn-small danger"

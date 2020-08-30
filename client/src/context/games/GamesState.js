@@ -37,8 +37,29 @@ const GamesState = (props) => {
     }
   };
 
-  //Add Game
-  const addGame = () => {};
+  // Add game
+  const addGame = async (game) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const res = await axios.post("/api/games", game, config);
+
+      dispatch({
+        type: ADD_GAME,
+        payload: res.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: GAME_ERROR,
+        payload: error.response.msg,
+      });
+      console.log(error);
+    }
+  };
 
   //Update Game
 
@@ -65,6 +86,7 @@ const GamesState = (props) => {
     <GamesContext.Provider
       value={{
         games: state.games,
+        addGame,
         getGames,
         deleteGame,
       }}

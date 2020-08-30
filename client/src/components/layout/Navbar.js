@@ -42,11 +42,11 @@ const Navbar = ({ title, icon }) => {
 
   return (
     <div className="navbar">
-      <a href="/">
+      <Link to="/">
         <h1 id="nav-title">
           <i className={icon} /> {title}
         </h1>
-      </a>
+      </Link>
 
       <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
@@ -59,7 +59,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: "Gamer Facts",
+  title: "GamerFacts",
   icon: "fas fa-gamepad",
 };
 

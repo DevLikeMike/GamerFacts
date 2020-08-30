@@ -1,4 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, Fragment } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../../context/auth/authContext";
 import AlertContext from "../../context/alert/alertContext";
 
@@ -46,37 +47,36 @@ const Login = (props) => {
   };
 
   return (
-    <div>
-      <h1>
-        Account <span>Login</span>
-      </h1>
-      <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={onChange}
-            autoComplete="off"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={onChange}
-          />
-        </div>
-        <input
-          type="submit"
-          value="Login"
-          className="btn btn-primary btn-block"
-        />
-      </form>
-    </div>
+    <Fragment>
+      <div className="form-wrapper flex flex-center col">
+        <h1>Account Login</h1>
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Please enter your Email"
+              value={email}
+              onChange={onChange}
+              autoComplete="off"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={onChange}
+            />
+          </div>
+          <input type="submit" value="Login" className="btn" />
+        </form>
+        <Link to="/register" className="success text-center">
+          Create Account
+        </Link>
+      </div>
+    </Fragment>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 const Landing = () => (
   <Fragment>
@@ -7,12 +8,12 @@ const Landing = () => (
       <div className="button-list">
         <ul>
           <li>
-            <a className="badge" href="/login">
+            <Link className="badge" to="/login">
               Login
-            </a>
-            <a className="badge" href="/register">
+            </Link>
+            <Link className="badge" to="/register">
               Sign Up
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
