@@ -50,6 +50,9 @@ const Game = (props) => {
 
     return (
       <Fragment>
+        <Link to="/games" className="backBtn">
+          <i class="fas fa-chevron-left"></i> Back
+        </Link>
         <h1 className="gameTitle text-center">
           {name}-{platform}
         </h1>

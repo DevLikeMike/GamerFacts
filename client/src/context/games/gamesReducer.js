@@ -31,5 +31,18 @@ export default (state, action) => {
         ...state,
         games: state.games.filter((game) => game._id !== action.payload),
       };
+    case FILTER_GAMES:
+      return {
+        ...state,
+        filtered: state.games.filter((game) => {
+          const regex = new RegExp(`${action.payload}`, "gi");
+          return game.name.match(regex);
+        }),
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null,
+      };
   }
 };

@@ -6,8 +6,12 @@ import AuthContext from "../../context/auth/authContext";
 const Navbar = ({ title, icon }) => {
   const authContext = useContext(AuthContext);
 
-  const { isAuthenticated, logout, user } = authContext;
-  // const { clearGames } = gamesContext;
+  let { isAuthenticated, logout, user } = authContext;
+  let name;
+  //Capitalize first letter in user name
+  if (user) {
+    name = user.name.charAt(0).toUpperCase() + user.name.slice(1);
+  }
 
   const onLogout = () => {
     logout();
@@ -16,9 +20,8 @@ const Navbar = ({ title, icon }) => {
 
   const authLinks = (
     <Fragment>
-      <li>Hello {user && user.name}</li>
+      <li id="greeting">Welcome {name}</li>
       <li>
-        <Link to="/games">Game Reviews</Link>
         <a onClick={onLogout} href="/">
           <i className="fas fa-sign-out-alt"></i>
           <span>Logout</span>
@@ -40,12 +43,11 @@ const Navbar = ({ title, icon }) => {
 
   return (
     <div className="navbar">
-      <Link to="/">
+      <Link to={isAuthenticated ? "/games" : "/"}>
         <h1 id="nav-title">
           <i className={icon} /> {title}
         </h1>
       </Link>
-
       <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
   );

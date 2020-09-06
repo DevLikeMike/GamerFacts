@@ -5,16 +5,17 @@ import axios from "axios";
 import {
   GET_GAMES,
   GAME_ERROR,
-  GET_GAME,
   DELETE_GAME,
   ADD_GAME,
   UPDATE_GAME,
   CLEAR_FILTER,
+  FILTER_GAMES,
 } from "../types";
 
 const GamesState = (props) => {
   const initialState = {
     games: null,
+    filtered: null,
   };
 
   const [state, dispatch] = useReducer(gamesReducer, initialState);
@@ -102,16 +103,27 @@ const GamesState = (props) => {
     }
   };
 
-  //FilterGames
+  // FilterGames
+  const filterGames = (text) => {
+    dispatch({ type: FILTER_GAMES, payload: text });
+  };
+
+  // Clear Filter
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  };
 
   return (
     <GamesContext.Provider
       value={{
         games: state.games,
+        filtered: state.filtered,
         addGame,
         getGames,
         updateGame,
         deleteGame,
+        filterGames,
+        clearFilter,
       }}
     >
       {props.children}

@@ -36,10 +36,10 @@ const App = () => {
                 <Route exact path="/" component={Landing} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
+                <Route path="/newgame" component={NewGame} />
                 <Route exact path="/games" component={Games} />
                 <Route exact path="/games/:_id" component={Game} />
                 <Route exact path="/games/:_id/edit" component={EditGame} />
-                <Route path="/newgame" component={NewGame} />
               </Switch>
             </div>
           </Router>
