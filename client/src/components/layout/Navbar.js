@@ -2,11 +2,9 @@ import React, { Fragment, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/auth/authContext";
-import GamesContext from "../../context/games/gamesContext";
 
 const Navbar = ({ title, icon }) => {
   const authContext = useContext(AuthContext);
-  const gamesContext = useContext(GamesContext);
 
   const { isAuthenticated, logout, user } = authContext;
   // const { clearGames } = gamesContext;

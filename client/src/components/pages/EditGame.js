@@ -1,73 +1,57 @@
 import React, { Fragment, useState, useContext } from "react";
+import { useParams } from "react-router";
 import GamesContext from "../../context/games/gamesContext";
-import AuthContext from "../../context/auth/authContext";
 import Stars from "react-rating-stars-component";
 
-const NewGame = (props) => {
+const EditGame = (props) => {
   const gamesContext = useContext(GamesContext);
-  const authContext = useContext(AuthContext);
-  const { addGame } = gamesContext;
-  const { user } = authContext;
+  const { updateGame, games } = gamesContext;
 
-  const [newGame, setNewGame] = useState({
-    ngUser: "",
-    name: "",
-    image: "",
-    rating: "",
-    description: "",
-    platform: "",
-    date: "",
-    author: "",
+  const { _id } = useParams();
+
+  let gameToEdit = games.filter((game) => game._id === _id)[0];
+
+  const [editedGame, setEditedGame] = useState({
+    name: `${gameToEdit.name}`,
+    image: `${gameToEdit.image}`,
+    rating: `${gameToEdit.rating}`,
+    description: `${gameToEdit.description}`,
+    platform: `${gameToEdit.platform}`,
   });
 
-  let {
-    ngUser,
-    name,
-    image,
-    rating,
-    author,
-    description,
-    platform,
-    date,
-  } = newGame;
+  let { name, image, rating, description, platform } = editedGame;
 
   //Stars component info
   const starConfig = {
     size: 30,
     count: 5,
     isHalf: true,
-    value: 3,
+    value: Number(rating),
     color: "#777",
     activeColor: "#dea602",
     onChange: (newValue) => {
       console.log(`new value is ${newValue}`);
-      setNewGame({ ...newGame, rating: newValue });
-      console.log(rating);
+      setEditedGame({ ...editedGame, rating: newValue });
     },
   };
 
   const onChange = (e) => {
-    //Update values as they change
-    setNewGame({ ...newGame, [e.target.name]: e.target.value });
+    setEditedGame({ ...editedGame, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    //Set final values to the game before submitting to DB
-    ngUser = user.id;
-    console.log(user.name);
-    author = user.name;
-    date = Date.now();
-    //Submit post request with newGame to game api
-    addGame(newGame);
-    //Redirect back to games page, showing new game
-    props.history.push("/games");
+    updateGame(editedGame, _id);
+    // setTimeout(() => {
+    //   props.history.push(`/games/${_id}`);
+    // }, 1000);
+    props.history.push(`/games/${_id}`);
   };
 
   return (
     <Fragment>
       <div className="form-wrapper flex flex-center col">
-        <h1 id="newGameHeader">New Game Review</h1>
+        <h1 id="newGameHeader">{name}</h1>
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <input
@@ -91,8 +75,8 @@ const NewGame = (props) => {
             />
           </div>
           <select name="platform" onChange={onChange}>
-            <option value="" defaultValue>
-              Platform?
+            <option value={platform} defaultValue>
+              {platform}
             </option>
             <option value="PC">PC</option>
             <option value="XBOX">xbox</option>
@@ -113,11 +97,11 @@ const NewGame = (props) => {
           </div>
           <h3 className="text-center">Please Rate Your Game</h3>
           <Stars {...starConfig} classNames="stars" />
-          <input type="submit" value="Submit New Game" />
+          <input type="submit" value="Update Your Game" />
         </form>
       </div>
     </Fragment>
   );
 };
 
-export default NewGame;
+export default EditGame;

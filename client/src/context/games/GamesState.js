@@ -62,6 +62,28 @@ const GamesState = (props) => {
   };
 
   //Update Game
+  const updateGame = async (game, id) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const res = await axios.put(`/api/games/${id}`, game, config);
+      getGames();
+
+      dispatch({
+        type: UPDATE_GAME,
+        payload: res.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: GAME_ERROR,
+        payload: error,
+      });
+    }
+  };
 
   //Delete Game
   const deleteGame = async (id) => {
@@ -88,6 +110,7 @@ const GamesState = (props) => {
         games: state.games,
         addGame,
         getGames,
+        updateGame,
         deleteGame,
       }}
     >

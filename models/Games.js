@@ -5,6 +5,10 @@ const GameSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },
+  author: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -15,7 +19,7 @@ const GameSchema = mongoose.Schema({
   },
   rating: {
     type: String,
-    default: "Five",
+    default: "5",
     required: true,
   },
   description: {

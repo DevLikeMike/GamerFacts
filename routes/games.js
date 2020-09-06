@@ -50,8 +50,9 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
     const { name, image, description, rating, platform } = req.body;
+    let author = await User.findById(req.user.id);
+    author = author.name;
 
     try {
       const newGame = new Game({
@@ -61,13 +62,14 @@ router.post(
         rating,
         platform,
         user: req.user.id,
+        author,
       });
 
       const game = await newGame.save();
 
       res.json(game);
     } catch (error) {
-      console.error(err.message);
+      console.error(error.message);
       res.status(500).send("Sever Error");
     }
   }
@@ -87,19 +89,17 @@ router.put("/:id", auth, async (req, res) => {
   if (platform) gameFields.platform = platform;
   if (description) gameFields.description = description;
 
-  console.log(name, image, description, rating, platform);
-
   try {
     let game = await Game.findById(req.params.id);
 
     if (!game) return res.status(404).json({ msg: "Game not fount" });
 
-    //Make sure user owns contact
+    //Make sure user owns game
     if (game.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "Not authorized" });
     }
 
-    contact = await Game.findByIdAndUpdate(
+    game = await Game.findByIdAndUpdate(
       req.params.id,
       { $set: gameFields },
       { new: true }
@@ -112,16 +112,16 @@ router.put("/:id", auth, async (req, res) => {
   }
 });
 
-// @route       DELETE api/contacts
-// @desc        Delete contact
+// @route       DELETE api/games
+// @desc        Delete game
 // @access      Private
 router.delete("/:id", auth, async (req, res) => {
   try {
     let game = await Game.findById(req.params.id);
 
-    if (!game) return res.status(404).json({ msg: "Game not fount" });
+    if (!game) return res.status(404).json({ msg: "Game not found" });
 
-    //Make sure user owns contact
+    //Make sure user owns game
     if (game.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "Not authorized" });
     }
@@ -130,7 +130,7 @@ router.delete("/:id", auth, async (req, res) => {
 
     res.json({ msg: "Game Removed" });
   } catch (error) {
-    console.error(err.message);
+    console.error(error.message);
     res.status(500).send("Sever Error");
   }
 });

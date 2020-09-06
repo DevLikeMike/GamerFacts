@@ -7,6 +7,7 @@ import Landing from "./components/pages/Landing";
 import Games from "./components/pages/Games";
 import Game from "./components/pages/Game";
 import NewGame from "./components/pages/NewGame";
+import EditGame from "./components/pages/EditGame";
 import PrivateRoute from "./components/routing/PrivateRoute";
 //Auth Pages
 import Login from "./components/auth/Login";
@@ -36,7 +37,8 @@ const App = () => {
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route exact path="/games" component={Games} />
-                <Route path="/games/:_id" component={Game} />
+                <Route exact path="/games/:_id" component={Game} />
+                <Route exact path="/games/:_id/edit" component={EditGame} />
                 <Route path="/newgame" component={NewGame} />
               </Switch>
             </div>

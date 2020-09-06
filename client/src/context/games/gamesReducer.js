@@ -19,6 +19,13 @@ export default (state, action) => {
         ...state,
         games: action.payload,
       };
+    case UPDATE_GAME:
+      return {
+        ...state,
+        games: state.games.map((game) =>
+          game._id === action.payload._id ? action.payload : game
+        ),
+      };
     case DELETE_GAME:
       return {
         ...state,

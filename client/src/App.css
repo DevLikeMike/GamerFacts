@@ -247,7 +247,7 @@ a {
 }
 
 .card p {
-  padding: 0.5rem 0;
+  padding: 0.2rem 0;
 }
 
 .card img {
@@ -257,22 +257,107 @@ a {
   border-bottom: 1px #888785 solid;
 }
 
+.authGI {
+  color: #333;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
 /* Game Page Styling */
+
+.gameTitle {
+  margin: 2rem auto 0 auto;
+}
+
 .game-cont {
+  padding-left: 1rem;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 1rem auto;
+  gap: 1rem;
+}
+
+.game-cont .left-side {
   display: flex;
+  height: 80vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+  grid-column: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-cont .right-side {
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  grid-column: 2;
+}
+
+.game-cont .stars {
+  margin-bottom: 1rem;
+  margin-left: 25%;
 }
 
 .game-cont img {
   height: 20rem;
   object-fit: cover;
+  position: absolute;
+  top: 1rem;
+  left: 50;
 }
 
 .game-cont p {
-  text-align: center;
+  text-align: start;
   width: 80%;
-  margin-top: 1rem;
+  margin-top: 0;
   line-height: 1.6rem;
+}
+
+@media only screen and (max-width: 1024px) {
+  .game-cont {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+  }
+  .game-cont .left-side {
+    height: 30vh;
+    grid-column: 1;
+  }
+  .game-cont .right-side {
+    grid-column: 1;
+    align-items: center;
+  }
+  .game-cont p {
+    width: 100;
+  }
+  .game-cont .stars {
+    margin: 1rem auto;
+  }
+  .card p {
+    padding: 0.2rem 0.1rem;
+  }
+  .showcase {
+    width: 66%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .card-cont {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .card-cont {
+    width: 80%;
+    margin-top: 1.5rem;
+  }
+  .showcase {
+    width: 80%;
+  }
 }
