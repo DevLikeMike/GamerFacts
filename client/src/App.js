@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //Components
 import Nav from "./components/layout/Navbar";
+import Alerts from "./components/layout/Alerts";
 //Pages
 import Landing from "./components/pages/Landing";
 import Games from "./components/pages/Games";
@@ -12,7 +13,7 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 //Auth Pages
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-
+//States
 import GamesState from "./context/games/GamesState";
 import AuthState from "./context/auth/AuthState";
 import AlertState from "./context/alert/AlertState";
@@ -32,14 +33,19 @@ const App = () => {
           <Router>
             <div className="App">
               <Nav />
+              <Alerts />
               <Switch>
                 <Route exact path="/" component={Landing} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
-                <Route path="/newgame" component={NewGame} />
-                <Route exact path="/games" component={Games} />
-                <Route exact path="/games/:_id" component={Game} />
-                <Route exact path="/games/:_id/edit" component={EditGame} />
+                <PrivateRoute path="/newgame" component={NewGame} />
+                <PrivateRoute exact path="/games" component={Games} />
+                <PrivateRoute exact path="/games/:_id" component={Game} />
+                <PrivateRoute
+                  exact
+                  path="/games/:_id/edit"
+                  component={EditGame}
+                />
               </Switch>
             </div>
           </Router>

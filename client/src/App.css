@@ -49,18 +49,6 @@ a {
   color: #fff;
 }
 
-.success {
-  background-color: #a7ee00;
-}
-
-.warning {
-  background-color: #d6a03b;
-}
-
-.danger {
-  background-color: #d64d3b;
-}
-
 /* Navbar */
 .navbar {
   display: flex;
@@ -100,8 +88,31 @@ a {
   margin-right: 1.2rem;
 }
 
-/* Landing styles */
+/* Alert div styling */
+.alert {
+  margin: 1rem auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 2rem;
+  padding: 1rem;
+  border-radius: 999px;
+}
 
+.alert-success {
+  background-color: #a7ee00;
+}
+
+.alert-warning {
+  background-color: #d6a03b;
+}
+
+.alert-danger {
+  background-color: #d64d3b;
+}
+
+/* Landing styles */
 .landing-container {
   color: rgb(250, 250, 250);
   background-image: url("https://images.pexels.com/photos/2416948/pexels-photo-2416948.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
@@ -136,11 +147,21 @@ a {
 
 /* Form Styling */
 .form-wrapper {
-  margin: 3rem auto 0 auto;
+  margin: 2rem auto 0 auto;
   width: 35%;
   border: #333 0.5px solid;
   border-radius: 5px;
   padding-bottom: 2rem;
+  overflow: hidden;
+  background-color: #fcfcfc;
+  box-shadow: 0 0 3px 0.1px;
+}
+
+.authHeader {
+  width: 100%;
+  background-color: #ffbf49;
+  text-align: center;
+  border-bottom: #333 0.5px solid;
 }
 
 .form-wrapper form {

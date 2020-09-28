@@ -4,8 +4,8 @@ import AuthContext from "../../context/auth/authContext";
 import AlertContext from "../../context/alert/alertContext";
 
 const Login = (props) => {
-  const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
+  const alertContext = useContext(AlertContext);
 
   const { setAlert } = alertContext;
   const { login, error, clearErrors, isAuthenticated } = authContext;
@@ -37,7 +37,7 @@ const Login = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (email === "" || password === "") {
-      setAlert("Please fill in all information", "danger");
+      setAlert("Please enter both EMAIL and PASSWORD", "danger");
     } else {
       login({
         email,
@@ -49,7 +49,7 @@ const Login = (props) => {
   return (
     <Fragment>
       <div className="form-wrapper flex flex-center col">
-        <h1>Account Login</h1>
+        <h1 className="authHeader">Account Login</h1>
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <input
@@ -72,7 +72,7 @@ const Login = (props) => {
           </div>
           <input type="submit" value="Login" className="btn" />
         </form>
-        <Link to="/register" className="success text-center">
+        <Link to="/register" className="text-center">
           Create Account
         </Link>
       </div>

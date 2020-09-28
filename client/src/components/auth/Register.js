@@ -52,7 +52,7 @@ const Register = (props) => {
   return (
     <Fragment>
       <div className="form-wrapper flex flex-center col">
-        <h1>Account Register</h1>
+        <h1 className="authHeader">Account Register</h1>
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <input
@@ -60,7 +60,7 @@ const Register = (props) => {
               name="name"
               value={name}
               onChange={onChange}
-              placeholder="Please enter your name..."
+              placeholder="Please enter your name"
               required
             />
           </div>
