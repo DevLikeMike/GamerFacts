@@ -1,18 +1,23 @@
 {
+  "homepage": "http://DevLikeMike.github.io/GamerFacts",
   "name": "node_practice",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "clientinstall": "npm install --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DevLikeMike/node_practice.git"
+    "url": "git+https://github.com/DevLikeMike/GamerFacts"
   },
   "keywords": [],
   "author": "Michael Hall",
@@ -20,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/DevLikeMike/node_practice/issues"
   },
-  "homepage": "https://github.com/DevLikeMike/node_practice#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
@@ -28,10 +32,12 @@
     "express": "^4.17.1",
     "express-validator": "^6.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.25"
+    "mongoose": "^5.9.25",
+    "react-scripts": "^3.4.3"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
+    "gh-pages": "^3.1.0",
     "nodemon": "^2.0.4"
   }
 }
