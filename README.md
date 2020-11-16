@@ -1,4 +1,5 @@
-# node_practice
-Practicing with node app/server/mods/react
+# GamerFacts
 
-Potential Project for portfolio in the future. A RESTful api on the back end, which will allow users to operate with CRUD requests. The main ideas are to let users provide an image of the game(either screen shot or cover art), and leave a review along with a rating(1-5). Basic auth using Jwt and Express validator.
+A video game review site, where users can rate games they have played. These reviews can then be seen by all users. Ratings can be given between 1 and 5 stars. The idea is to have gamers rate games for other users before they buy or play them.
+
+This application uses JSON web token for authorization, a RESTful api backend is used for all CRUD uses. It is deployed on heroku(excuse load times), the MERN stack was used to create the application along with using the context api in React.js.
