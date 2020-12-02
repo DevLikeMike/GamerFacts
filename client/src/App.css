@@ -174,13 +174,18 @@ a {
   margin-top: 0.6rem;
 }
 
-.form-wrapper .form-group input {
+.form-wrapper .form-group input,
+.form-wrapper select {
   width: 100%;
   height: 2rem;
   border: #9e9e9e 1px solid;
   border-radius: 5px;
   padding-left: 0.2rem;
   font-size: 18px;
+}
+
+.form-wrapper select {
+  margin-top: 0.6rem;
 }
 
 .form-wrapper input[type="submit"],
@@ -403,6 +408,9 @@ a {
   .showcase {
     width: 66%;
   }
+  .form-wrapper {
+    width: 80%;
+  }
 }
 
 @media only screen and (max-width: 900px) {
@@ -418,5 +426,8 @@ a {
   }
   .showcase {
     width: 80%;
+  }
+  #newGameHeader {
+    text-align: center;
   }
 }

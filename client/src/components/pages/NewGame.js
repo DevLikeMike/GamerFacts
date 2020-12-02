@@ -55,7 +55,6 @@ const NewGame = (props) => {
     e.preventDefault();
     //Set final values to the game before submitting to DB
     ngUser = user.id;
-    console.log(user.name);
     author = user.name;
     date = Date.now();
     //Submit post request with newGame to game api
@@ -95,7 +94,7 @@ const NewGame = (props) => {
               Platform?
             </option>
             <option value="PC">PC</option>
-            <option value="XBOX">xbox</option>
+            <option value="XBOX">Xbox</option>
             <option value="Playstation">Playstation</option>
             <option value="Nintendo">Nintendo</option>
           </select>
