@@ -16,9 +16,9 @@ const Search = () => {
 
   const onChange = (e) => {
     if (text.current.value !== "") {
-      gamesContext.filterGames(e.target.value);
+      filterGames(e.target.value);
     } else {
-      gamesContext.clearFilter();
+      clearFilter();
     }
   };
 

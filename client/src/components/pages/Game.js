@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, Fragment } from "react";
+import React, { useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 
@@ -14,7 +14,7 @@ const Game = (props) => {
   const authContext = useContext(AuthContext);
   const gamesContext = useContext(GamesContext);
   const { games, deleteGame } = gamesContext;
-  const { loadUser, user } = authContext;
+  const { user } = authContext;
   // Get id from query, set ready for mongo comparisons
   const { _id } = useParams();
   //Delete Handler
