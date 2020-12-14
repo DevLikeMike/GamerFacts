@@ -17,7 +17,11 @@ const Login = (props) => {
     }
 
     if (error === "Invalid Credentials") {
-      setAlert(error, "danger");
+      setAlert("Please enter both EMAIL and PASSWORD", "danger");
+      clearErrors();
+    }
+    if (error === "Invalid Email or Password") {
+      setAlert("Failed to login. Invalid Email or Password", "danger");
       clearErrors();
     }
     // eslint-disable-next-line

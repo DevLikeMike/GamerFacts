@@ -8,6 +8,7 @@
 /*Global/Standard stlying*/
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  scroll-behavior: smooth;
 }
 
 textarea {
@@ -86,6 +87,112 @@ a {
   color: #fff;
   font-weight: 600;
   margin-right: 1.2rem;
+}
+
+/* Mobile Side bar stylings */
+#sideBar {
+  visibility: hidden;
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  background: rgb(222, 145, 2) 90%;
+  box-shadow: 0 0 7px 1px;
+  width: 55vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: -55vw;
+  z-index: 2;
+  color: rgb(0, 0, 0);
+  transition: ease all 0.3s;
+}
+
+#sideBar ul {
+  margin-top: 35vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#sideBar ul li {
+  color: #000;
+  margin-bottom: 1rem;
+  font-size: xx-large;
+}
+
+.sideBarOpen {
+  transform: translate(-55vw);
+  display: flex;
+  visibility: visible;
+}
+
+.sideBarNotOpen {
+  transform: translate(55vw);
+  display: none;
+  visibility: hidden;
+}
+
+/* Hamburger Button Styling */
+#hburger-container {
+  display: none;
+}
+
+#sideBar .hburger-container {
+  position: absolute;
+  top: 0.5rem;
+  left: 1px;
+}
+
+.hburger-container {
+  height: 20px;
+  width: 30px;
+  position: relative;
+  cursor: pointer;
+}
+
+#hburger-container span {
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  left: 0;
+  opacity: 1;
+  z-index: 0;
+  color: black;
+  background-color: #000000;
+  border-radius: 9px;
+  transform: rotate(0deg);
+  transition: 0.1s ease-in-out;
+}
+
+#hburger-container span:nth-child(1) {
+  top: 0px;
+  transform-origin: center;
+}
+
+#hburger-container span:nth-child(2) {
+  top: 7px;
+}
+
+#hburger-container span:nth-child(3) {
+  top: 14px;
+  transform-origin: center;
+}
+
+#hburger-container.open span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 10px;
+  left: 0px;
+}
+
+#hburger-container.open span:nth-child(2) {
+  transform: rotateX(190deg);
+  opacity: 0;
+}
+
+#hburger-container.open span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 10px;
 }
 
 /* Alert div styling */
@@ -230,6 +337,7 @@ a {
 /* Games Styling */
 
 #searchForm {
+  z-index: 0;
   margin: 2rem auto 0 auto;
   width: 66%;
   height: 1rem;
@@ -416,6 +524,21 @@ a {
 @media only screen and (max-width: 900px) {
   .card-cont {
     grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navRight {
+    visibility: hidden;
+  }
+  #hburger-container {
+    visibility: visible;
+    display: inline;
+    cursor: pointer;
+  }
+  #sideBar {
+    display: flex;
+    visibility: visible;
   }
 }
 
