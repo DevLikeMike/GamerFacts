@@ -52,6 +52,7 @@ a {
 
 /* Navbar */
 .navbar {
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
   justify-content: flex-end;
@@ -91,8 +92,6 @@ a {
 
 /* Mobile Side bar stylings */
 #sideBar {
-  visibility: hidden;
-  display: none;
   align-items: center;
   flex-direction: column;
   background: rgb(222, 145, 2) 90%;
@@ -104,7 +103,7 @@ a {
   right: -55vw;
   z-index: 2;
   color: rgb(0, 0, 0);
-  transition: ease all 0.3s;
+  transition: ease all 0.7s;
 }
 
 #sideBar ul {
@@ -121,16 +120,18 @@ a {
   font-size: xx-large;
 }
 
-.sideBarOpen {
+#sideBar.sideBarOpen {
+  position: fixed;
   transform: translate(-55vw);
   display: flex;
   visibility: visible;
 }
 
-.sideBarNotOpen {
+#sideBar.sideBarNotOpen {
   transform: translate(55vw);
   display: none;
   visibility: hidden;
+  width: 0;
 }
 
 /* Hamburger Button Styling */
@@ -337,7 +338,7 @@ a {
 /* Games Styling */
 
 #searchForm {
-  z-index: 0;
+  z-index: -1;
   margin: 2rem auto 0 auto;
   width: 66%;
   height: 1rem;
