@@ -5,32 +5,25 @@ import AuthContext from "../../context/auth/authContext";
 
 const Navbar = ({ title, icon }) => {
   const authContext = useContext(AuthContext);
-  const [open, setOpen] = useState(false);
 
   let { isAuthenticated, logout, user } = authContext;
   let name;
-  //Capitalize first letter in user name
   if (user) {
-    name = user.name.charAt(0).toUpperCase() + user.name.slice(1);
-  }
-
-  const onClick = (e) => {
-      e.stopPropagation();
-      e.nativeEvent.stopImmediatePropagation();
-      setOpen(!open);
+    name = user.name;
   }
 
   const onLogout = () => {
     logout();
-    onClick();
   };
 
   const authLinks = (
     <Fragment>
-      <li id="greeting">Welcome {name}</li>
+      <li id='greeting'>
+        Welcome <span id='greetingName'>{name}</span>
+      </li>
       <li>
-        <a onClick={onLogout} href="/">
-          <i className="fas fa-sign-out-alt"></i>
+        <a onClick={onLogout} href='/'>
+          <i className='fas fa-sign-out-alt'></i>
           <span>Logout</span>
         </a>
       </li>
@@ -40,35 +33,22 @@ const Navbar = ({ title, icon }) => {
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to="/register" onClick={onClick}>Register</Link>
+        <Link to='/register'>Register</Link>
       </li>
       <li>
-        <Link to="/login" onClick={onClick}>Login</Link>
+        <Link to='/login'>Login</Link>
       </li>
     </Fragment>
   );
 
   return (
-    <div className="navbar">
+    <div className='navbar'>
       <Link to={isAuthenticated ? "/games" : "/"}>
-        <h1 id="nav-title">
-          <i className={icon} /> {title}
+        <h1 id='nav-title'>
+          <i className={icon} /> <span id='title-text'>{title}</span>
         </h1>
       </Link>
-      <ul className="navRight">{isAuthenticated ? authLinks : guestLinks}</ul>
-      <div id="hburger-container" className={open ? "hburger-container open" : "hburger-container"} onClick={onClick}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div id="sideBar" className={open ? "sideBarOpen" : "sideBarNotOpen"}>
-        <div id="hburger-container" className={open ? "hburger-container open" : "hburger-container"} onClick={onClick}>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
-      </div>
+      <ul className='navRight'>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
   );
 };

@@ -90,110 +90,8 @@ a {
   margin-right: 1.2rem;
 }
 
-/* Mobile Side bar stylings */
-#sideBar {
-  align-items: center;
-  flex-direction: column;
-  background: rgb(222, 145, 2) 90%;
-  box-shadow: 0 0 7px 1px;
-  width: 55vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  right: -55vw;
-  z-index: 2;
-  color: rgb(0, 0, 0);
-  transition: ease all 0.7s;
-}
-
-#sideBar ul {
-  margin-top: 35vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#sideBar ul li {
-  color: #000;
-  margin-bottom: 1rem;
-  font-size: xx-large;
-}
-
-#sideBar.sideBarOpen {
-  position: fixed;
-  transform: translate(-55vw);
-  display: flex;
-  visibility: visible;
-}
-
-#sideBar.sideBarNotOpen {
-  transform: translate(55vw);
-  display: none;
-  visibility: hidden;
-  width: 0;
-}
-
-/* Hamburger Button Styling */
-#hburger-container {
-  display: none;
-}
-
-#sideBar .hburger-container {
-  position: absolute;
-  top: 0.5rem;
-  left: 1px;
-}
-
-.hburger-container {
-  height: 20px;
-  width: 30px;
-  position: relative;
-  cursor: pointer;
-}
-
-#hburger-container span {
-  width: 100%;
-  height: 3px;
-  position: absolute;
-  left: 0;
-  opacity: 1;
-  z-index: 0;
-  color: black;
-  background-color: #000000;
-  border-radius: 9px;
-  transform: rotate(0deg);
-  transition: 0.1s ease-in-out;
-}
-
-#hburger-container span:nth-child(1) {
-  top: 0px;
-  transform-origin: center;
-}
-
-#hburger-container span:nth-child(2) {
-  top: 7px;
-}
-
-#hburger-container span:nth-child(3) {
-  top: 14px;
-  transform-origin: center;
-}
-
-#hburger-container.open span:nth-child(1) {
-  transform: rotate(45deg);
-  top: 10px;
-  left: 0px;
-}
-
-#hburger-container.open span:nth-child(2) {
-  transform: rotateX(190deg);
-  opacity: 0;
-}
-
-#hburger-container.open span:nth-child(3) {
-  transform: rotate(-45deg);
-  top: 10px;
+#greetingName::first-letter {
+  text-transform: uppercase;
 }
 
 /* Alert div styling */
@@ -338,11 +236,15 @@ a {
 /* Games Styling */
 
 #searchForm {
-  z-index: -1;
   margin: 2rem auto 0 auto;
   width: 66%;
   height: 1rem;
   position: relative;
+  cursor: pointer;
+}
+
+.searchBar:focus {
+  outline: none;
 }
 
 .searchBar {
@@ -528,18 +430,9 @@ a {
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .navRight {
-    visibility: hidden;
-  }
-  #hburger-container {
-    visibility: visible;
-    display: inline;
-    cursor: pointer;
-  }
-  #sideBar {
-    display: flex;
-    visibility: visible;
+@media only screen and (max-width: 500px) {
+  #greeting {
+    display: none;
   }
 }
 
@@ -553,5 +446,14 @@ a {
   }
   #newGameHeader {
     text-align: center;
+  }
+  #title-text {
+    visibility: hidden;
+  }
+  #nav-title i::after {
+    content: "GamerFacts";
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 0.1rem;
+    font-size: 1rem;
   }
 }
